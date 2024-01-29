@@ -4,14 +4,10 @@ from data.books import books
 
 app = Flask(__name__)
 
-@app.route('/library/<book_id>', methods=['GET'])
-def index(book_id):
-    book = books[id == int(book_id)]
+@app.route('/books', methods=['GET'])
+def bookList():
+    return jsonify(books)
 
-    if book:
-        return jsonify(book)
-    else:
-        return jsonify({"error": "Book not found"}), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
